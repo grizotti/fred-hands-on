@@ -15,10 +15,10 @@
   tags:
     - setup_helm_kubectl
 
-#- name: get helm installation file
-#  shell: curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-#  tags:
-#    - setup_helm_kubectl
+- name: get helm installation file
+  shell: curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+  tags:
+    - setup_helm_kubectl
 
 - name: set execution helm file
   shell: chmod 700 get_helm.sh

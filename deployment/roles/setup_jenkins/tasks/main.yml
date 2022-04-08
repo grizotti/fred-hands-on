@@ -5,8 +5,8 @@
     src: "jenkins_master/"
     dest: "{{ project_path }}/jenkins_build"
     mode: '0744'
-    owner: "root"
-    group: "wheel"
+    owner: "ec2-user"
+    group: "ec2-user"
   become: yes
   tags:
     - setup_jenkins
@@ -15,8 +15,8 @@
   file:
     path: "{{ project_path }}/jenkins_home"
     state: directory
-    owner: "root"
-    group: "wheel"
+    owner: "ec2-user"
+    group: "ec2-user"
   tags:
     - setup_jenkins
 
@@ -39,7 +39,7 @@
 - name: set environment
   template:
     src: jenkins_envs.sh.j2
-    dest: "/opt/jenkins_envs.sh"
+    dest: "/etc/profile.d/jenkins_envs.sh"
     mode: '0764'
   become: true
   tags:
@@ -47,8 +47,7 @@
 
 - name: build jenkins image
   shell:
-    #cmd: "docker build -t {{ image_tag }} --build-arg group_id=$(getent group docker | awk -F: '{print $3}') -f Dockerfile_Jenkins_Master ."
-    cmd: "docker build -t {{ image_tag }} -f Dockerfile_Jenkins_Master ."
+    cmd: "docker build -t {{ image_tag }} --build-arg group_id=$(getent group docker | awk -F: '{print $3}') -f Dockerfile_Jenkins_Master ."
     chdir: "{{ project_path }}/jenkins_build"
   tags:
     - setup_jenkins

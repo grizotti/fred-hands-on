@@ -7,30 +7,29 @@
   tags:
     - deploy_minikube
 
-#- name: download sha256sum
-#  get_url:
-#    url: '{{ minikube_mirror }}/{{ minikube_redis_filename }}.sha256'
-#    dest: '{{ minikube_download_dir }}/{{ minikube_download_filename }}.sha256'
-#    force: no
-#    use_proxy: yes
-#    validate_certs: yes
-#    mode: 'u=rw,go=r'
-#  tags:
-#    - deploy_minikube
+- name: download sha256sum
+  get_url:
+    url: '{{ minikube_mirror }}/{{ minikube_redis_filename }}.sha256'
+    dest: '{{ minikube_download_dir }}/{{ minikube_download_filename }}.sha256'
+    force: no
+    use_proxy: yes
+    validate_certs: yes
+    mode: 'u=rw,go=r'
+  tags:
+    - deploy_minikube
 
-#- name: read sha256sum
-#  slurp:
-#    src: '{{ minikube_download_dir }}/{{ minikube_download_filename }}.sha256'
-#  register: minikube_sha256sum
-#  tags:
-#    - deploy_minikube
+- name: read sha256sum
+  slurp:
+    src: '{{ minikube_download_dir }}/{{ minikube_download_filename }}.sha256'
+  register: minikube_sha256sum
+  tags:
+    - deploy_minikube
 
 - name: download Minikube
   get_url:
-    url: '{{ minikube_mirror }}'
-#    url: '{{ minikube_mirror }}/{{ minikube_redis_filename }}'
+    url: '{{ minikube_mirror }}/{{ minikube_redis_filename }}'
     dest: '{{ minikube_download_dir }}/{{ minikube_download_filename }}'
-#    checksum: 'sha256:{{ minikube_sha256sum.content | b64decode | trim }}'
+    checksum: 'sha256:{{ minikube_sha256sum.content | b64decode | trim }}'
     force: no
     use_proxy: yes
     validate_certs: yes
@@ -42,8 +41,8 @@
   become: yes
   file:
     state: directory
-    owner: jenkins
-    group: wheel
+    owner: root
+    group: root
     mode: 'u=rwx,go=rx'
     dest: '{{ minikube_install_dir }}'
   tags:
@@ -56,14 +55,13 @@
     remote_src: yes
     dest: '{{ minikube_install_path }}'
     force: yes
-    owner: jenkins
-    group: wheel
+    owner: root
+    group: root
     mode: 'u=rwx,go=rx'
   tags:
     - deploy_minikube
 
 - name: start minikube
-#  shell: bash -c "minikube start"
   shell: bash -c "minikube start"
   tags:
     - deploy_minikube
