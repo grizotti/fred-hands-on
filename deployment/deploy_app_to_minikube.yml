@@ -2,7 +2,8 @@
 - name: deploy minikube on remote
   hosts: minikube
   gather_facts: True
-
+  remote_user: ec2-user
+  
   roles:
     - copy_image
     - copy_helm_chart
