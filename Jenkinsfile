@@ -106,7 +106,7 @@ pipeline {
                                 "-e service_port=8080 " +
                                 "-e greeted=Jhon " +
                                 "-vv " +
-                                "--key-file=deploiment/skey"
+                                "--key-file=deployment/skey"
                 )
             }
         }
