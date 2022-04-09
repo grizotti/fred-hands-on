@@ -96,7 +96,7 @@ pipeline {
                         inventory: 'deployment/inventory',
                         colorized: true,
                         disableHostKeyChecking: true,
-                        credentialsId: 'skey',
+                        credentialsId: 'environment/skey',
                         extras: "-e image=${env.IMAGE} " +
                                 "-e project_name=${env.PROJ} " +
                                 "-e project_path=${env.PROJ_PATH} " +
