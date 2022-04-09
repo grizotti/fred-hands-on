@@ -1,9 +1,9 @@
 pipeline {
     agent  any
-    //options {
-    //    ansiColor('xterm')
-    //    disableConcurrentBuilds()
-    //}
+    options {
+        ansiColor('xterm')
+        disableConcurrentBuilds()
+    }
     stages {
         // Stage conf to setup environment variable for build
         stage("conf") {
