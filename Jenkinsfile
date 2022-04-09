@@ -97,7 +97,7 @@ pipeline {
                         colorized: true,
                         disableHostKeyChecking: true,
                         remote_user: ec2-user
-                        credentialsId: 'skey',
+                        //credentialsId: 'skey',
                         extras: "-e image=${env.IMAGE} " +
                                 "-e project_name=${env.PROJ} " +
                                 "-e project_path=${env.PROJ_PATH} " +
