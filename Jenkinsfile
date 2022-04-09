@@ -105,7 +105,7 @@ pipeline {
                                 "-e replica_count=2 " +
                                 "-e service_port=8080 " +
                                 "-e greeted=Jhon " +
-                                "-vv" +
+                                "-vv " +
                                 "--key-file=skey"
                 )
             }
