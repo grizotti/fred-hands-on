@@ -43,7 +43,7 @@ pipeline {
                 script {
                     env["IMAGE"] = "${env.PROJ}:${env.BRANCH_NAME}.${env.BUILD_ID}"
                     docker.build(env["IMAGE"])
-                    sh "docker save -o deployment/env["IMAGE"].tar env["IMAGE"]"
+                    sh "docker save -o deployment/${env["IMAGE"]}.tar ${env["IMAGE"]}"
                     env["ABS_IMAGE_PATH"] = "${env.WORKSPACE}/deployment/${env.IMAGE}.tar"
                 }
             }
