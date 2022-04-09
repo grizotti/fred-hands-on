@@ -96,7 +96,7 @@ pipeline {
                         inventory: 'deployment/inventory',
                         colorized: true,
                         disableHostKeyChecking: true,
-                        remote_user: ec2-user
+                        //remote_user: ec2-user
                         //credentialsId: 'skey',
                         extras: "-e image=${env.IMAGE} " +
                                 "-e project_name=${env.PROJ} " +
