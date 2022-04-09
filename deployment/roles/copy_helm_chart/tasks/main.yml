@@ -10,7 +10,7 @@
 
 - name: Copy helm package to remote
   copy:
-    src: "{{ helm_package }}"
+    src: "/var/lib/jenkins/jenkins_home/workspace/Run Jenkinsfile from Github/{{ helm_package }}"
     dest: "{{ project_path }}/{{ helm_package }}"
     mode: '0744'
   tags:
