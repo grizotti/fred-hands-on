@@ -96,7 +96,8 @@ pipeline {
                         inventory: 'deployment/inventory',
                         colorized: true,
                         disableHostKeyChecking: true,
-                        credentialsId: 'environment/skey',
+                        remote_user: ec2-user
+                        credentialsId: 'skey',
                         extras: "-e image=${env.IMAGE} " +
                                 "-e project_name=${env.PROJ} " +
                                 "-e project_path=${env.PROJ_PATH} " +
@@ -104,7 +105,8 @@ pipeline {
                                 "-e replica_count=2 " +
                                 "-e service_port=8080 " +
                                 "-e greeted=Jhon " +
-                                "-vv"
+                                "-vv" +
+                                "--key-file=skey"
                 )
             }
         }
