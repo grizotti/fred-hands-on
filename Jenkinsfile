@@ -127,8 +127,9 @@ pipeline {
                         disableHostKeyChecking: true,
                         extras: "-e project_name=${env.PROJ} " +
                                 "-e project_path=${env.PROJ_PATH} " +
-                                "-vv",
-                        credentialsId: 'deployment/skey'
+                                "-vv " +
+                                "--key-file=deployment/skey",
+                //        credentialsId: 'deployment/skey'
                 )
                 script {
                     try {
