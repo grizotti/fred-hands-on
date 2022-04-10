@@ -162,7 +162,7 @@ pipeline {
 Build: ${currentBuild.displayName}
 Result: ${currentBuild.currentResult}
 """
-                mail body: body, subject: status, to: 'katsok@personetics.com'
+                mail body: body, subject: status, to: 'fred_grizotti@hotmail.com'
             }
             sh "rm deployment/${env.IMAGE}.tar"
         }
