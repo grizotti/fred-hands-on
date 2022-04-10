@@ -1,4 +1,4 @@
-FRED HANDS-ON
+# FRED HANDS-ON
 
 Task 1. Deploy a new Jenkins master using deployment playbook (DONE)
  
