@@ -1,0 +1,2 @@
+teste:
+echo "teste"
