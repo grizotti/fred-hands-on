@@ -52,6 +52,6 @@
     module: wait_for
     host: "{{ ansible_host }}"
     port: "8080"
-    timeout: 1
+    timeout: 10
 
 - debug: msg="port open"
