@@ -2,6 +2,7 @@
 - name: start_test_minikube_app
   hosts: minikube
   gather_facts: True
+  remote_user: ec2-user
   
   roles:
     - setup_port_forward
