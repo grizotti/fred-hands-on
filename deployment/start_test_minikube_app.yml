@@ -3,7 +3,7 @@
   hosts: minikube
   gather_facts: True
   
-  command: nohup socat TCP-LISTEN:8080,fork TCP:{{ minikube_ip.stdout | trim }}:{{ service_node_port.stdout | trim }} </dev/null >/dev/null 2>&1 &
+  cmd: nohup socat TCP-LISTEN:8080,fork TCP:{{ minikube_ip.stdout | trim }}:{{ service_node_port.stdout | trim }} </dev/null >/dev/null 2>&1 &
   
   roles:
     - setup_port_forward
