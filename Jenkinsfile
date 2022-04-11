@@ -111,49 +111,49 @@ pipeline {
             }
         }
 
-        stage("remote test") {
-            agent {
-                docker {
-                    image "${env.DEP_IMAGE}"
-                    reuseNode true
-                }
-            }
-            steps {
-                sh 'ls -la'
+//        stage("remote test") {
+//            agent {
+//                docker {
+//                    image "${env.DEP_IMAGE}"
+//                    reuseNode true
+//                }
+//            }
+//            steps {
+//                sh 'ls -la'
                 
-                ansiblePlaybook(
-                        playbook: 'deployment/start_test_minikube_app.yml',
-                        inventory: 'deployment/inventory',
-                        colorized: true,
-                        disableHostKeyChecking: true,
-                        extras: "-e project_name=${env.PROJ} " +
-                                "-e project_path=${env.PROJ_PATH} " +
-                                "-vv " +
-                                "--key-file=deployment/skey",
+//                ansiblePlaybook(
+//                        playbook: 'deployment/start_test_minikube_app.yml',
+//                        inventory: 'deployment/inventory',
+//                        colorized: true,
+//                        disableHostKeyChecking: true,
+//                        extras: "-e project_name=${env.PROJ} " +
+//                                "-e project_path=${env.PROJ_PATH} " +
+//                                "-vv " +
+//                                "--key-file=deployment/skey",
                 //        credentialsId: 'deployment/skey'
-                )
-                script {
-                    try {
-                        sleep 15
-                        sh "curl -L -D - http://${env.SERVER_IP}:8080/greeting?name=katsok"
+//                )
+//                script {
+//                    try {
+//                        sleep 15
+//                        sh "curl -L -D - http://${env.SERVER_IP}:8080/greeting?name=katsok"
 
-                    } catch (err) {
-                        echo "Remote Test Failed: ${err}"
-                        currentBuild.result = "UNSTABLE"
-                    } finally {
-                        echo "Always tear down env"
-                        ansiblePlaybook(
-                                playbook: 'deployment/stop_test_minikube_app.yml',
-                                inventory: 'deployment/inventory',
-                                colorized: true,
-                                disableHostKeyChecking: true,
-                                extras: "--key-file=deployment/skey",
+//                    } catch (err) {
+//                        echo "Remote Test Failed: ${err}"
+//                        currentBuild.result = "UNSTABLE"
+//                    } finally {
+//                        echo "Always tear down env"
+//                        ansiblePlaybook(
+//                                playbook: 'deployment/stop_test_minikube_app.yml',
+//                                inventory: 'deployment/inventory',
+//                                colorized: true,
+//                                disableHostKeyChecking: true,
+//                                extras: "--key-file=deployment/skey",
                                 //credentialsId: 'deployment/key'
-                        )
-                    }
-                }
-            }
-        }
+//                        )
+//                    }
+//                }
+//            }
+//        }
 
     }
     post {
