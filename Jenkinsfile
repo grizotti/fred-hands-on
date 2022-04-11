@@ -111,26 +111,26 @@ pipeline {
             }
         }
 
- //       stage("remote test") {
- //           agent {
- //               docker {
- //                   image "${env.DEP_IMAGE}"
- //                   reuseNode true
- //               }
- //           }
- //           steps {
- //               sh 'ls -la'
- //               ansiblePlaybook(
- //                       playbook: 'deployment/start_test_minikube_app.yml',
- //                       inventory: 'deployment/inventory',
- //                       colorized: true,
- //                       disableHostKeyChecking: true,
- //                       extras: "-e project_name=${env.PROJ} " +
- //                               "-e project_path=${env.PROJ_PATH} " +
-//                                "-vv " +
-//                                "--key-file=deployment/skey",
+        stage("remote test") {
+            agent {
+                docker {
+                    image "${env.DEP_IMAGE}"
+                    reuseNode true
+                }
+            }
+            steps {
+                sh 'ls -la'
+                ansiblePlaybook(
+                        playbook: 'deployment/start_test_minikube_app.yml',
+                        inventory: 'deployment/inventory',
+                        colorized: true,
+                        disableHostKeyChecking: true,
+                        extras: "-e project_name=${env.PROJ} " +
+                                "-e project_path=${env.PROJ_PATH} " +
+                                "-vv " +
+                                "--key-file=deployment/skey",
                 //        credentialsId: 'deployment/skey'
-//                )
+                )
 //                script {
 //                    try {
 //                        sleep 15
@@ -155,16 +155,16 @@ pipeline {
 //
     }
     post {
-        always {
-            script {
-                def status = "${env.BUILD_TAG} - ${currentBuild.currentResult}"
-                def body = """
-Build: ${currentBuild.displayName}
-Result: ${currentBuild.currentResult}
-"""
-                mail body: body, subject: status, to: 'fred_grizotti@hotmail.com'
-            }
+//        always {
+//            script {
+//                def status = "${env.BUILD_TAG} - ${currentBuild.currentResult}"
+//                def body = """
+// Build: ${currentBuild.displayName}
+// Result: ${currentBuild.currentResult}
+// """
+//                mail body: body, subject: status, to: 'fred_grizotti@hotmail.com'
+//            }
             sh "rm deployment/${env.IMAGE}.tar"
-        }
+//        }
     }
 }
