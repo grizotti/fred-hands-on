@@ -27,7 +27,7 @@
   template:
     src: run_port_forward.sh.j2
     dest: "{{ project_path }}/run_port_forward.sh"
-    mode: '0777'
+    mode: '+x'
   tags:
     - setup_port_forward
 
