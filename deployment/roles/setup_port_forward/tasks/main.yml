@@ -43,7 +43,7 @@
   shell: "./run_port_forward.sh"
   args:
     chdir: "{{ project_path }}"
-    executable: /bin/bash
+    executable: /bin/sh
   tags:
     - setup_port_forward
 
