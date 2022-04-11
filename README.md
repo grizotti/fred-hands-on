@@ -81,7 +81,8 @@ On the PIPELINE tab set as the image bellow
 ## Task 5. Remote stage test - ***Optional*** (DONE)
    - Enable remote test for the `greet` api from Jenkinsfile stage
 
-Step 1 - Had to change the first line of the file deployment/roles/setup_port_forward/templates/run_port_forward.sh.j2 (From #!/bin/bash to #!/bin/sh) 
+Step 1 - Include line remote_user: ec2-user on deployment/start_test_minikube_app.yml.
+Step 2 - Include lines "become: true" and "remote_user: ec2-user" on deployment/stop_test_minikube_app.yml 
 
 ## Task 6. SMTP - ***Optional*** (DONE/TESTED)
    - Enable smtp mailing for post stage
