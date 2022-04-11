@@ -4,38 +4,53 @@
  
  - Jenkins' configuration uses [configuration-as-code-plugin](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md) to start secured
 
-Step 1 - Login to de Jenkins Server.
+Step 1 - Login to the Jenkins Server.
 
-Step 2 - Clone de repo to user home folder. (git clone https://github.com/grizotti/fred-hands-on)
+Step 2 - Install git and ansible ( sudo yum -y install git && amazon-linux-extras install ansible2 ) 
 
-Step 3 - Go to the folder fred-hands-on. (cd fred-hands-on)
+Step 3 - Clone the repo to user home folder. (git clone https://github.com/grizotti/fred-hands-on)
 
-Step 4 - Copy the skey from the environment folder to deployment folder. (cp environment/skey deployment/)
+Step 4 - Go to the folder fred-hands-on. (cd fred-hands-on)
 
-Step 5 - Change de inventory file with the servers IP adresses and username. (vim inventory)
+Step 5 - Copy the skey from the environment folder to deployment folder. (cp environment/skey deployment/)
 
-Step 6 - Run ansible-playbook (ansible-playbook -i inventory deploy_jenkins.yml --key-file skey)
+Step 6 - Change key permission. (chmod 0400 deployment/skey)
+
+Step 7 - Change de inventory file with the servers IP adresses and username. (vim inventory)
+
+Step 8 - Go to deployment folder. (cd deployment)
+
+Step 9 - Run ansible-playbook (ansible-playbook -i inventory deploy_jenkins.yml --key-file skey)
 
 
 ## Task 2. Deploy the minikube development environment via playbook (DONE)
 
 Step 1 - Login to de Deployment Server.
 
-Step 2 - Clone de repo to user home folder. (git clone https://github.com/grizotti/fred-hands-on)
+Step 2 - Install git and ansible ( sudo yum -y install git && amazon-linux-extras install ansible2 ) 
 
-Step 3 - Go to the folder fred-hands-on. (cd fred-hands-on)
+Step 3 - Clone de repo to user home folder. (git clone https://github.com/grizotti/fred-hands-on)
 
-Step 4 - Copy the skey from the environment folder to deployment folder. (cp environment/skey deployment/)
+Step 4 - Go to the folder fred-hands-on. (cd fred-hands-on)
 
-Step 5 - Change de inventory file with the servers IP adresses and username. (vim inventory)
+Step 5 - Copy the skey from the environment folder to deployment folder. (cp environment/skey deployment/)
 
-Step 6 - Run ansible-playbook (ansible-playbook -i inventory deploy_minikube.yml --key-file skey)
+Step 6 - Change key permission. (chmod 0400 deployment/skey)
+
+Step 7 - Change de inventory file with the servers IP adresses and username. (vim inventory)
+
+Step 8 - Go to deployment folder. (cd deployment)
+
+Step 9 - Run ansible-playbook (ansible-playbook -i inventory deploy_minikube.yml --key-file skey)
 
 ## Task 3. Run the Jenkinsfile and make it successfully finish (DONE)
     - Connect the Jenkins to a git VCS (i.e. GitHub/bitbucket/gitlab 
       all has free account capacity) 
     - Use webhook for each commit push (no polling) 
     - Use jenkins credentials when needed (someone always hacking)
+
+* Update the plugins.
+* Have to approve scripts.
 
 Step 1 - On Github do the following 
  
@@ -58,7 +73,7 @@ On the PIPELINE tab set as the image bellow
 
 
 ## Task 4. Run the `deploy_app_to_minikube.yml` playbook development to deploy the `greet` chart with helm to minikube development env (DONE)
-   It's on the Jenkinsfile.
+   It's running on the Jenkinsfile.
 
 ## Task 5. Remote stage test - ***Optional***
    - Enable remote test for the `greet` api from Jenkinsfile stage
