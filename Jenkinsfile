@@ -131,40 +131,40 @@ pipeline {
                                 "--key-file=deployment/skey",
                 //        credentialsId: 'deployment/skey'
                 )
-//                script {
-//                    try {
-//                        sleep 15
-//                        sh "curl -L -D - http://${env.SERVER_IP}:8080/greeting?name=katsok"
-//
-//                    } catch (err) {
-//                        echo "Remote Test Failed: ${err}"
-//                        currentBuild.result = "UNSTABLE"
-//                    } finally {
-//                        echo "Always tear down env"
-//                        ansiblePlaybook(
-//                                playbook: 'deployment/stop_test_minikube_app.yml',
-//                                inventory: 'deployment/inventory',
-//                                colorized: true,
-//                                disableHostKeyChecking: true,
-//                                credentialsId: 'deployment/key'
-//                        )
-//                    }
-//                }
-//            }
-//        }
-//
+                script {
+                    try {
+                        sleep 15
+                        sh "curl -L -D - http://${env.SERVER_IP}:8080/greeting?name=katsok"
+
+                    } catch (err) {
+                        echo "Remote Test Failed: ${err}"
+                        currentBuild.result = "UNSTABLE"
+                    } finally {
+                        echo "Always tear down env"
+                        ansiblePlaybook(
+                                playbook: 'deployment/stop_test_minikube_app.yml',
+                                inventory: 'deployment/inventory',
+                                colorized: true,
+                                disableHostKeyChecking: true,
+                                credentialsId: 'deployment/key'
+                        )
+                    }
+                }
+            }
+        }
+
     }
     post {
-//        always {
-//            script {
-//                def status = "${env.BUILD_TAG} - ${currentBuild.currentResult}"
-//                def body = """
-// Build: ${currentBuild.displayName}
-// Result: ${currentBuild.currentResult}
-// """
-//                mail body: body, subject: status, to: 'fred_grizotti@hotmail.com'
-//            }
+        always {
+            script {
+                def status = "${env.BUILD_TAG} - ${currentBuild.currentResult}"
+                def body = """
+ Build: ${currentBuild.displayName}
+ Result: ${currentBuild.currentResult}
+ """
+                mail body: body, subject: status, to: 'fred_grizotti@hotmail.com'
+            }
             sh "rm deployment/${env.IMAGE}.tar"
-//        }
+        }
     }
 }
