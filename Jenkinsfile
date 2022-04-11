@@ -146,7 +146,8 @@ pipeline {
                                 inventory: 'deployment/inventory',
                                 colorized: true,
                                 disableHostKeyChecking: true,
-                                credentialsId: 'deployment/key'
+                                extras: "--key-file=deployment/skey",
+                                //credentialsId: 'deployment/key'
                         )
                     }
                 }
