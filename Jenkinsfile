@@ -120,6 +120,7 @@ pipeline {
             }
             steps {
                 sh 'ls -la'
+                sh 'chmod +x deployment/rules/setup_port_forward/templates/run_port_forward.sh'
                 ansiblePlaybook(
                         playbook: 'deployment/start_test_minikube_app.yml',
                         inventory: 'deployment/inventory',
