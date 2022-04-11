@@ -51,6 +51,7 @@ Step 9 - Run ansible-playbook (ansible-playbook -i inventory deploy_minikube.yml
 
 * Update the plugins.
 * Have to approve scripts.
+* Have to include the "--key-file=deployment/skey" line in all the ansible execution steps .
 
 Step 1 - On Github do the following 
  
@@ -78,9 +79,7 @@ On the PIPELINE tab set as the image bellow
 ## Task 5. Remote stage test - ***Optional*** (DONE)
    - Enable remote test for the `greet` api from Jenkinsfile stage
 
-Step 1 - Had to change the first line of the file deployment/roles/setup_port_forward/templates/run_port_forward.sh.j2 (From #!/bin/bash to #!/bin/sh)
-
-Step 2 - 
+Step 1 - Had to change the first line of the file deployment/roles/setup_port_forward/templates/run_port_forward.sh.j2 (From #!/bin/bash to #!/bin/sh) 
 
 ## Task 6. SMTP - ***Optional*** (DONE/TESTED)
    - Enable smtp mailing for post stage
