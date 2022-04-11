@@ -6,6 +6,6 @@
     - stop_port_forward
 
 - name: register service port
-  shell:  "sudo kill -9 {{ my_pid.stdout }}"
+  shell:  "kill -9 {{ my_pid.stdout }}"
   tags:
     - stop_port_forward
