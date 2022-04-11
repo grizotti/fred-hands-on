@@ -40,10 +40,11 @@
 - debug: msg="{{ pf_file.stdout }}"
 
 - name: Create and start listener
-  shell: "sh run_port_forward.sh"
-  args:
-    chdir: "{{ project_path }}"
-    executable: /bin/bash
+  #shell: "sh run_port_forward.sh"
+  shell: "nohup socat TCP-LISTEN:8080,fork TCP:{{ minikube_ip.stdout | trim }}:{{ service_node_port.stdout | trim }} </dev/null >/dev/null 2>&1 &"
+  #args:
+  #  chdir: "{{ project_path }}"
+  #  executable: /bin/bash
   tags:
     - setup_port_forward
 
