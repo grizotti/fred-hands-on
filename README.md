@@ -75,8 +75,12 @@ On the PIPELINE tab set as the image bellow
 ## Task 4. Run the `deploy_app_to_minikube.yml` playbook development to deploy the `greet` chart with helm to minikube development env (DONE)
    It's running on the Jenkinsfile.
 
-## Task 5. Remote stage test - ***Optional***
+## Task 5. Remote stage test - ***Optional*** (DONE)
    - Enable remote test for the `greet` api from Jenkinsfile stage
+
+Step 1 - Had to change the first line of the file deployment/roles/setup_port_forward/templates/run_port_forward.sh.j2 (From #!/bin/bash to #!/bin/sh)
+
+Step 2 - 
 
 ## Task 6. SMTP - ***Optional*** (DONE/TESTED)
    - Enable smtp mailing for post stage
