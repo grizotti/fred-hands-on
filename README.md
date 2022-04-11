@@ -1,5 +1,7 @@
-# FRED HANDS-ON
-
+# README - FRED HANDS-ON
+## NOTE 1: The Jenkins Running environment is up on http://54.78.87.150:8080/. User "admin" and password "password" to login.
+## NOTE 2: The Job Run Jenkinsfile from Github is good to go. (Test it)
+ 
 ## Task 1. Deploy a new Jenkins master using deployment playbook (DONE)
  
  - Jenkins' configuration uses [configuration-as-code-plugin](https://github.com/jenkinsci/configuration-as-code-plugin/blob/master/README.md) to start secured
