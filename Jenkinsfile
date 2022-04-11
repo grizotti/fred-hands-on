@@ -120,7 +120,7 @@ pipeline {
             }
             steps {
                 sh 'ls -la'
-                sh 'nohup socat TCP-LISTEN:8080,fork TCP4:192.168.49.2:32117 </dev/null >/dev/null 2>&1 &'
+                
                 ansiblePlaybook(
                         playbook: 'deployment/start_test_minikube_app.yml',
                         inventory: 'deployment/inventory',
