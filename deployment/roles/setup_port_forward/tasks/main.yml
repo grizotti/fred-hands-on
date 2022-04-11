@@ -40,10 +40,10 @@
 - debug: msg="{{ pf_file.stdout }}"
 
 - name: Create and start listener
-  shell: "./run_port_forward.sh"
+  shell: "sh run_port_forward.sh"
   args:
     chdir: "{{ project_path }}"
-    executable: /bin/sh
+    executable: /bin/bash
   tags:
     - setup_port_forward
 
