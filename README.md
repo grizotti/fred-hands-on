@@ -78,11 +78,11 @@ On the PIPELINE tab set as the image bellow
 ## Task 4. Run the `deploy_app_to_minikube.yml` playbook development to deploy the `greet` chart with helm to minikube development env (DONE)
    It's running on the Jenkinsfile.
 
-## Task 5. Remote stage test - ***Optional*** (DONE)
+## Task 5. Remote stage test - ***Optional*** (FAIL)
    - Enable remote test for the `greet` api from Jenkinsfile stage
 
-Step 1 - Include line remote_user: ec2-user on deployment/start_test_minikube_app.yml.
-Step 2 - Include lines "become: true" and "remote_user: ec2-user" on deployment/stop_test_minikube_app.yml 
+I made a few changes and tests. The port forward script is not openning the 8080 server port.
+With the changes I made sometimes it worked but sometimes it doesn't so I consider no completed.
 
 ## Task 6. SMTP - ***Optional*** (DONE/TESTED)
    - Enable smtp mailing for post stage
