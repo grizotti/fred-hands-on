@@ -1,5 +1,5 @@
 #!/bin/bash
-nohup socat TCP-LISTEN:8080,fork TCP4:{{ minikube_ip }}:{{ service_node_port }} </dev/null >/dev/null 2>&1 &
+nohup socat TCP-LISTEN:8080,fork TCP:{{ minikube_ip }}:{{ service_node_port }} </dev/null >/dev/null 2>&1 &
 
 
 #nohup socat TCP-LISTEN:8080,fork TCP4:192.168.49.2:32117 </dev/null >/dev/null 2>&1 &
