@@ -3,6 +3,7 @@
   hosts: minikube
   gather_facts: True
   remote_user: ec2-user
+  become: true
 
   roles:
     - stop_port_forward
