@@ -1,6 +1,6 @@
 ---
 - name: register minikube pid
-  #shell: ps -ef | grep socat | grep -v grep | tr -s " " | cut -d " " -f 2
+  ##shell: ps -ef | grep socat | grep -v grep | tr -s " " | cut -d " " -f 2
   shell: ps -ef | grep socat
   register: my_pid
   tags:
